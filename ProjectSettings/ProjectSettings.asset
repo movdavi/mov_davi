@@ -543,6 +543,9 @@ PlayerSettings:
   - m_BuildTarget: AndroidPlayer
     m_APIs: 150000000b000000
     m_Automatic: 0
+  - m_BuildTarget: WindowsStandaloneSupport
+    m_APIs: 02000000
+    m_Automatic: 0
   m_BuildTargetVRSettings: []
   m_DefaultShaderChunkSizeInMB: 16
   m_DefaultShaderChunkCount: 0
@@ -935,11 +938,11 @@ PlayerSettings:
   captureStartupLogs: {}
   activeInputHandler: 1
   windowsGamepadBackendHint: 0
-  cloudProjectId: eb8727c3-35fd-4346-ade6-54e6f04592ec
+  cloudProjectId: 85582894-6261-4713-a017-7ac7711ee7a3
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: MOV_DAVI
-  organizationId: unity_e49f5331844bcf41ad33
+  projectName: movgel
+  organizationId: marcbs44
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   hmiLoadingImage: {fileID: 0}
