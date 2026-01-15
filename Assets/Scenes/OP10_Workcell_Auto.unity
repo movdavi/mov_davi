@@ -2124,8 +2124,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e4e6033cc0505348ad43bacb061b468, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Lock
-  id: 1
-  locked: 0
 --- !u!4 &228961966 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8379626529011700698, guid: 9cec2e29ec89b4bf2b772f28a3645615, type: 3}
@@ -6677,7 +6675,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e16b0618280ce9c4f9ecff12eb6ea1a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Nest
-  id: 1
 --- !u!4 &677634655 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8379626529011700698, guid: 9cec2e29ec89b4bf2b772f28a3645615, type: 3}
@@ -11588,7 +11585,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13b37a864efdc2346b1dfdf68cc7c43a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Button
-  id: 1
 --- !u!4 &1150332528 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8379626529011700698, guid: 9cec2e29ec89b4bf2b772f28a3645615, type: 3}
@@ -15707,9 +15703,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8041fdefde8392e44bc9c33bd5906f15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Slot
-  id: 1
-  match_piece: 1
-  piece: 0
 --- !u!4 &1663938889 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8379626529011700698, guid: 9cec2e29ec89b4bf2b772f28a3645615, type: 3}
@@ -16660,7 +16653,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42d33a97571dd5c4b9158ead4ea5c394, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Machine
-  id: 1
 --- !u!4 &1754559015
 Transform:
   m_ObjectHideFlags: 0
@@ -16728,7 +16720,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90f9df74bce287746b97d1bfc59d063a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Section
-  id: 0
 --- !u!4 &1765917438 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8379626529011700698, guid: 9cec2e29ec89b4bf2b772f28a3645615, type: 3}
