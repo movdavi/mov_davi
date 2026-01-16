@@ -1122,6 +1122,11 @@ Transform:
   - {fileID: 1314941868}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &114799764 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4897527665106164933, guid: d5d5762639b984c20a80bdfd4ad9b2cc, type: 3}
+  m_PrefabInstance: {fileID: 2063530836}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &116353272
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2101,6 +2106,7 @@ GameObject:
   - component: {fileID: 228961968}
   - component: {fileID: 228961967}
   - component: {fileID: 228961965}
+  - component: {fileID: 228961970}
   m_Layer: 0
   m_Name: lock
   m_TagString: Untagged
@@ -2220,6 +2226,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 228961963}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &228961970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 228961963}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 683b6f80e3878430d9bfe05a70357c8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Blinking
+  highlightColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  speed: 2
 --- !u!1 &234407045
 GameObject:
   m_ObjectHideFlags: 0
@@ -3964,6 +3984,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 408393351}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &413184287 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4897527665106164933, guid: d5d5762639b984c20a80bdfd4ad9b2cc, type: 3}
+  m_PrefabInstance: {fileID: 1546635667}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &414456133
 GameObject:
   m_ObjectHideFlags: 0
@@ -10459,6 +10484,11 @@ MonoBehaviour:
     _installationVariants:
     - _memberName: mode
       _value: '{"value__":0}'
+--- !u!1 &994464605 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 419724387529801277, guid: 7f033afde3e274b66b5db0bc627c3b6d, type: 3}
+  m_PrefabInstance: {fileID: 1788881760}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &998485644
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12019,6 +12049,7 @@ GameObject:
   - component: {fileID: 1150332530}
   - component: {fileID: 1150332529}
   - component: {fileID: 1150332527}
+  - component: {fileID: 1150332532}
   m_Layer: 0
   m_Name: button
   m_TagString: Untagged
@@ -12137,6 +12168,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1150332525}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1150332532
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1150332525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 683b6f80e3878430d9bfe05a70357c8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Blinking
+  highlightColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  speed: 2
 --- !u!1 &1162509314 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5299162853074737972, guid: 31c9ddc4ed3c84b03823cb9f435cbecd, type: 3}
@@ -12915,6 +12960,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1258709436}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1264662691 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4897527665106164933, guid: d5d5762639b984c20a80bdfd4ad9b2cc, type: 3}
+  m_PrefabInstance: {fileID: 2126829519}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1271475983
 GameObject:
   m_ObjectHideFlags: 0
@@ -14714,7 +14764,7 @@ GameObject:
   - component: {fileID: 1438908674}
   - component: {fileID: 1438908673}
   m_Layer: 0
-  m_Name: slot (4)
+  m_Name: OP10B-N1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15816,13 +15866,30 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4897527665106164933, guid: d5d5762639b984c20a80bdfd4ad9b2cc, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1546635671}
   m_SourcePrefab: {fileID: 100100000, guid: d5d5762639b984c20a80bdfd4ad9b2cc, type: 3}
 --- !u!4 &1546635668 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6864127531978672556, guid: d5d5762639b984c20a80bdfd4ad9b2cc, type: 3}
   m_PrefabInstance: {fileID: 1546635667}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1546635671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 413184287}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 683b6f80e3878430d9bfe05a70357c8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Blinking
+  highlightColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  speed: 2
 --- !u!1 &1550893944
 GameObject:
   m_ObjectHideFlags: 0
@@ -16555,11 +16622,169 @@ MonoBehaviour:
     targetZone: {fileID: 0}
     piecesRequired: 1
     piecesDone: 0
-  - type: take
+  - type: place
     stepName: 25
     piecesToHighlight:
     - {fileID: 1144091428}
     targetZone: {fileID: 316428069}
+    piecesRequired: 1
+    piecesDone: 0
+  - type: take
+    stepName: 26
+    piecesToHighlight:
+    - {fileID: 773304863}
+    - {fileID: 1788881764}
+    targetZone: {fileID: 0}
+    piecesRequired: 2
+    piecesDone: 0
+  - type: place
+    stepName: 26.1
+    piecesToHighlight:
+    - {fileID: 773304863}
+    - {fileID: 773304863}
+    targetZone: {fileID: 0}
+    piecesRequired: 2
+    piecesDone: 0
+  - type: take
+    stepName: 27
+    piecesToHighlight:
+    - {fileID: 1192806021}
+    targetZone: {fileID: 0}
+    piecesRequired: 1
+    piecesDone: 0
+  - type: place
+    stepName: 27.1
+    piecesToHighlight:
+    - {fileID: 1192806021}
+    targetZone: {fileID: 0}
+    piecesRequired: 1
+    piecesDone: 0
+  - type: take
+    stepName: 28
+    piecesToHighlight:
+    - {fileID: 0}
+    - {fileID: 0}
+    targetZone: {fileID: 0}
+    piecesRequired: 2
+    piecesDone: 0
+  - type: take
+    stepName: 28
+    piecesToHighlight:
+    - {fileID: 0}
+    - {fileID: 0}
+    targetZone: {fileID: 0}
+    piecesRequired: 2
+    piecesDone: 0
+  - type: place
+    stepName: 29
+    piecesToHighlight:
+    - {fileID: 0}
+    - {fileID: 0}
+    targetZone: {fileID: 0}
+    piecesRequired: 2
+    piecesDone: 0
+  - type: action
+    stepName: 30
+    piecesToHighlight: []
+    targetZone: {fileID: 0}
+    piecesRequired: 1
+    piecesDone: 0
+  - type: take
+    stepName: 31
+    piecesToHighlight:
+    - {fileID: 0}
+    targetZone: {fileID: 0}
+    piecesRequired: 1
+    piecesDone: 0
+  - type: place
+    stepName: 32
+    piecesToHighlight:
+    - {fileID: 0}
+    targetZone: {fileID: 0}
+    piecesRequired: 1
+    piecesDone: 0
+  - type: take
+    stepName: 33
+    piecesToHighlight:
+    - {fileID: 1087737999}
+    targetZone: {fileID: 0}
+    piecesRequired: 1
+    piecesDone: 0
+  - type: place
+    stepName: 34
+    piecesToHighlight:
+    - {fileID: 1087737999}
+    targetZone: {fileID: 0}
+    piecesRequired: 1
+    piecesDone: 0
+  - type: take
+    stepName: 35
+    piecesToHighlight:
+    - {fileID: 1192806021}
+    targetZone: {fileID: 0}
+    piecesRequired: 1
+    piecesDone: 0
+  - type: place
+    stepName: 36
+    piecesToHighlight:
+    - {fileID: 1192806021}
+    targetZone: {fileID: 1438908671}
+    piecesRequired: 1
+    piecesDone: 0
+  - type: action
+    stepName: 37
+    piecesToHighlight:
+    - {fileID: 228961970}
+    targetZone: {fileID: 0}
+    piecesRequired: 1
+    piecesDone: 0
+  - type: take
+    stepName: 38
+    piecesToHighlight:
+    - {fileID: 773304863}
+    - {fileID: 1788881764}
+    targetZone: {fileID: 0}
+    piecesRequired: 1
+    piecesDone: 0
+  - type: place
+    stepName: 39
+    piecesToHighlight:
+    - {fileID: 773304863}
+    - {fileID: 1788881764}
+    targetZone: {fileID: 2031226513}
+    piecesRequired: 2
+    piecesDone: 0
+  - type: take
+    stepName: 40
+    piecesToHighlight:
+    - {fileID: 1980181352}
+    - {fileID: 2126829523}
+    - {fileID: 2063530840}
+    - {fileID: 1546635671}
+    targetZone: {fileID: 0}
+    piecesRequired: 4
+    piecesDone: 0
+  - type: place
+    stepName: 41
+    piecesToHighlight:
+    - {fileID: 1980181352}
+    - {fileID: 2126829523}
+    targetZone: {fileID: 2031226513}
+    piecesRequired: 2
+    piecesDone: 0
+  - type: place
+    stepName: 42
+    piecesToHighlight:
+    - {fileID: 2063530840}
+    - {fileID: 1546635671}
+    targetZone: {fileID: 0}
+    piecesRequired: 2
+    piecesDone: 0
+  - type: action
+    stepName: 43
+    piecesToHighlight:
+    - {fileID: 1150332532}
+    targetZone: {fileID: 0}
     piecesRequired: 1
     piecesDone: 0
 --- !u!4 &1635881544
@@ -17894,13 +18119,30 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 419724387529801277, guid: 7f033afde3e274b66b5db0bc627c3b6d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1788881764}
   m_SourcePrefab: {fileID: 100100000, guid: 7f033afde3e274b66b5db0bc627c3b6d, type: 3}
 --- !u!4 &1788881761 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1372928819496474447, guid: 7f033afde3e274b66b5db0bc627c3b6d, type: 3}
   m_PrefabInstance: {fileID: 1788881760}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1788881764
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 994464605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 683b6f80e3878430d9bfe05a70357c8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Blinking
+  highlightColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  speed: 2
 --- !u!1 &1788962528
 GameObject:
   m_ObjectHideFlags: 0
@@ -20290,7 +20532,7 @@ GameObject:
   - component: {fileID: 2031226516}
   - component: {fileID: 2031226515}
   m_Layer: 0
-  m_Name: slot (3)
+  m_Name: OP10B-N2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20628,13 +20870,30 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4897527665106164933, guid: d5d5762639b984c20a80bdfd4ad9b2cc, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2063530840}
   m_SourcePrefab: {fileID: 100100000, guid: d5d5762639b984c20a80bdfd4ad9b2cc, type: 3}
 --- !u!4 &2063530837 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6864127531978672556, guid: d5d5762639b984c20a80bdfd4ad9b2cc, type: 3}
   m_PrefabInstance: {fileID: 2063530836}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2063530840
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 114799764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 683b6f80e3878430d9bfe05a70357c8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Blinking
+  highlightColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  speed: 2
 --- !u!1001 &2072129475
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21182,13 +21441,30 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4897527665106164933, guid: d5d5762639b984c20a80bdfd4ad9b2cc, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2126829523}
   m_SourcePrefab: {fileID: 100100000, guid: d5d5762639b984c20a80bdfd4ad9b2cc, type: 3}
 --- !u!4 &2126829520 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6864127531978672556, guid: d5d5762639b984c20a80bdfd4ad9b2cc, type: 3}
   m_PrefabInstance: {fileID: 2126829519}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2126829523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1264662691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 683b6f80e3878430d9bfe05a70357c8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Blinking
+  highlightColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  speed: 2
 --- !u!1 &2135932401
 GameObject:
   m_ObjectHideFlags: 0
