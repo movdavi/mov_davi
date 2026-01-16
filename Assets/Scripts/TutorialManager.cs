@@ -1,9 +1,17 @@
+using System;
+using TMPro;
 using UnityEngine;
 
 public class TutorialManager : MonoBehaviour
 {
     public TutorialStep[] steps;
     private int currentStep = 0;
+
+    [Header("UI")]
+    public TMP_Text progressText;
+
+    public event Action<float> ProgressChanged;
+    public float ProgressPercent { get; private set; }
 
     void Start()
     {
@@ -35,6 +43,7 @@ public class TutorialManager : MonoBehaviour
         }
 
         Debug.Log("Paso actual: " + steps[index].stepName);
+        UpdateProgressText();
     }
 
     // Llamar desde los triggers / piezas cuando se coloca correctamente
@@ -92,6 +101,8 @@ public class TutorialManager : MonoBehaviour
             StartStep(currentStep);
         else
             Debug.Log("Tutorial completado!");
+
+        UpdateProgressText();
     }
 
     private bool IsTakeStep(TutorialStep step)
@@ -107,5 +118,17 @@ public class TutorialManager : MonoBehaviour
     private int GetPiecesRequired(TutorialStep step)
     {
         return step.piecesRequired > 0 ? step.piecesRequired : step.piecesToHighlight.Length;
+    }
+
+    private void UpdateProgressText()
+    {
+        var totalSteps = steps != null ? steps.Length : 0;
+        float percent = totalSteps > 0 ? (float)currentStep / totalSteps : 0f;
+        percent = Mathf.Clamp01(percent) * 100f;
+        ProgressPercent = percent;
+        ProgressChanged?.Invoke(ProgressPercent);
+
+        if (progressText != null)
+            progressText.text = $"Progrés: {ProgressPercent:0}%";
     }
 }
