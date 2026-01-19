@@ -3,56 +3,60 @@ using UnityEngine;
 
 public class Section : MonoBehaviour
 {
-    public enum SECTION_REF
+    private enum SectionState
     {
-        NULL,
-        SECTION_A,
-        SECTION_B,
-        SECTION_C,
-        SECTION_D
+        Idle,
+        Operating,
+        Completed
     }
 
-    public SECTION_REF id;
-
-    public static Dictionary<SECTION_REF, Section> sections;
-
-    private readonly List<Nest.NEST_REF> nests = new();
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private SectionState currentState = SectionState.Idle;
+    private List<Nest> GetNests()
     {
+        List<Nest> nests = new();
 
         foreach (Transform child in transform)
         {
-            Debug.Log(child.name);
-            if (!child.TryGetComponent<Nest>(out Nest nest))
+            if (child.TryGetComponent<Nest>(out Nest nest))
             {
-                Debug.Log("Child " + child.name + " is not a Nest.");
-            }
-            else
-            {
-                Debug.Log("Adding nest " + nest.id + " to section " + id);
-                nests.Add(nest.id);
+                nests.Add(nest);
+
             }
         }
+
+        return nests;
     }
 
-    private void Awake()
+    public void Operate()
     {
-        sections ??= new Dictionary<SECTION_REF, Section>();
-        sections.Add(id, this);
+        if (currentState == SectionState.Idle)
+        {
+            currentState = SectionState.Operating;
+        } else if (currentState == SectionState.Idle)
+        {
+            currentState = SectionState.Idle;
+        }
+        
+        List<Nest> nests = GetNests();
+        foreach (Nest nest in nests)
+        {
+            nest.Opereate();
+            Debug.Log("[GAME] Operating nest: " + nest.name);
+        }
     }
     public bool IsReady()
     {
+        List<Nest> nests = GetNests();
 
-        foreach (Nest.NEST_REF nest_ref in nests)
-        {
-            if (!Nest.nests[nest_ref].IsReady())
-            {
-                Debug.Log("Nest " + nest_ref + " is not ready.");
-                return false;
-            }
+        if (nests.Count == 0) { 
+            Debug.LogError("[GAME] Section has no nests!");
+            return false;
         }
+
+
+        foreach (Nest nest in nests)
+            if (!nest.IsReady())  return false;
+
         return true;
     }
 }

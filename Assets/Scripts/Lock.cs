@@ -3,25 +3,7 @@ using System.Collections.Generic;
 
 public class Lock : MonoBehaviour
 {
-    public enum LOCK_REF
-    {
-        NULL,
-        LOCK_1,
-        LOCK_2,
-        LOCK_3,
-        LOCK_4
-    }
-
-    public LOCK_REF id;
-
     public bool locked = false;
-
-    public static Dictionary<LOCK_REF, Lock> locks;
-
-    public void Awake() {
-        locks ??= new Dictionary<LOCK_REF, Lock>();
-        locks.Add(id, this);
-    }
 
     public void Update()
     {
@@ -45,9 +27,19 @@ public class Lock : MonoBehaviour
         ToggleLock();
     }
 
+    public void OnTriggerEnter(Collider other)
+    {
+        ToggleLock();
+    }
+
 
     private void ToggleLock()
     {
         locked = !locked;
+    }
+
+    public void Operate()
+    {
+        locked = false;
     }
 }

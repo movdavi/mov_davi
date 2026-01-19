@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using static Nest;
@@ -5,31 +6,42 @@ using static Nest;
 public class Piece : MonoBehaviour
 {
 
-    static public Dictionary<PIECE_REF, Piece> pieces;
-    public enum PIECE_REF {
-        NULL,
-        PIECE_A,
-        PIECE_B,
-        PIECE_C
-    }
+    static public Dictionary<string, Piece> pieces;
 
-    public PIECE_REF id;
+    public string id;
+
+    private Vector3 startPosition;
+    private Quaternion startRotation;
+    private Vector3 startScale;
+
+    public bool isGrabbed = false;
 
     private void Awake()
     {
-        pieces ??= new Dictionary<PIECE_REF, Piece>();
-        pieces.Add(id, this);
-
+        pieces ??= new Dictionary<string, Piece>();
+        //check if id already exists
+        if (pieces.ContainsKey(id))
+        {
+            Debug.LogError($"[GAME] Piece with id {id} already exists!");
+            return;
+        }
+        else
+        {
+            pieces.Add(id, this);
+        }
     }
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private void Start()
     {
+        startPosition = transform.position;
+        startRotation = transform.rotation;
+        startScale = transform.localScale;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Operate()
     {
-        
+        Debug.Log($"[GAME] Piece {id} is being operated.");
+        transform.SetPositionAndRotation(startPosition, startRotation);
+        transform.localScale = startScale;
     }
 }

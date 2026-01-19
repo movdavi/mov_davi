@@ -4,61 +4,67 @@ using UnityEngine;
 
 public class Nest : MonoBehaviour
 {
-    public static Dictionary<NEST_REF, Nest> nests;
-    public enum NEST_REF
-    {
-        NULL,
-        NEST_A,
-        NEST_B,
-        NEST_C,
-        NEST_D
-    }
-
-    public NEST_REF id;
-
-    private readonly List<Slot.SLOT_REF> slots = new();
-
-
-    private void Awake()
-    {
-        nests ??= new Dictionary<NEST_REF, Nest>();
-        nests.Add(id, this);
-
-    }
-
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+
+    // Update is called once per frame
+    Piece result_piece = null;
+
+    private void Start()
     {
+        result_piece = GetResultPiece();
+        if (result_piece == null)
+            Debug.LogError("[GAME] Nest has no result piece!");
+        else
+            result_piece.gameObject.SetActive(false);
+    }
+
+    private Piece GetResultPiece()
+    {
+        Piece res = null;
+        foreach (Transform child in transform)
+            if (child.TryGetComponent<Piece>(out Piece piece))
+                res = piece;
+        return res;
+    }
+    private List<Slot> GetSlots()
+    {
+        List<Slot> slots = new();
 
         foreach (Transform child in transform)
         {
-            Debug.Log(child.name);
-            if (!child.TryGetComponent<Slot>(out Slot slot))
+            if (child.TryGetComponent<Slot>(out Slot slot))
             {
-                Debug.Log("Child " + child.name + " is not a Slot.");
-            }
-            else
-            {
-                Debug.Log("Adding slot " + slot.id + " to nest " + id);
-                slots.Add(slot.id);
+                slots.Add(slot);
             }
         }
+
+        return slots;
     }
-
-    // Update is called once per frame
-
     public bool IsReady()
     {
-        foreach (Slot.SLOT_REF slot_ref in slots)
-        {
-            if (!Slot.slots[slot_ref].IsReady())
-            {
-                Debug.Log("Slot " + slot_ref + " is not ready.");
-                return false;
-            }
-        }
+        List<Slot> slots = GetSlots();
+
+        if (slots.Count == 0) 
+            Debug.LogError("[GAME] Nest has no slots!");
+        
+        foreach (Slot slot in slots)
+            if (!slot.IsReady()) return false;
+            
         return true;
     }
 
+    public void Opereate()
+    {
+        List<Slot> slots = GetSlots();
+        foreach (Slot slot in slots)
+        {
+            slot.Operate();
+            Debug.Log("[GAME] Slot operated: " + slot.name);
+        }
 
+        if (result_piece != null) { 
+            result_piece.gameObject.SetActive(true);
+            result_piece.Operate();
+        }
+    }
 }

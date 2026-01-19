@@ -3,43 +3,22 @@ using UnityEngine;
 
 public class Button : MonoBehaviour
 {
+    private readonly float press_depth = 0.08f;
 
-    public enum BUTTON_REF
-    {
-        NULL,
-        BUTTON_A,
-        BUTTON_B,
-        BUTTON_C,
-        BUTTON_D
-    }
+    private Machine machine = null;
 
-    public BUTTON_REF id;
-
-    public static Dictionary<BUTTON_REF, Button> buttons;
-
-    private Machine.MACHINE_REF machine;
-
-    private void Awake()
-    {
-        buttons ??= new Dictionary<BUTTON_REF, Button>();
-        buttons.Add(id, this);
-    }
+    private GameObject button_box = null;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
-        //try get machine from parent
-        if (transform.parent != null && transform.parent.TryGetComponent<Machine>(out Machine machineComponent))
-        {
-            machine = machineComponent.id;
-            Debug.Log("Button " + id + " assigned to machine " + machine);
-        }
+        if (transform.childCount > 0)
+            button_box = transform.GetChild(0).gameObject;
         else
-        {
-            machine = Machine.MACHINE_REF.NULL;
-            Debug.Log("Button " + id + " has no machine assigned.");
-        }
+            Debug.LogError("[GAME] This button has no visual child (Button Box) to move!");
+
+        if (!transform.parent.TryGetComponent<Machine>(out machine))
+            Debug.LogError("[GAME] Button component not found on GameObject.");
     }
 
     void OnMouseDown()
@@ -49,19 +28,26 @@ public class Button : MonoBehaviour
 
     void OnClick()
     {
-        if (machine == Machine.MACHINE_REF.NULL)
+        if (machine != null)
         {
-            Debug.Log($"Button {id} has no machine assigned.");
-            return;
+            Debug.Log("[GAME] Button clicked, checking machine readiness...");
+            machine.Operate();
         }
-        if (!Machine.machines.ContainsKey(machine))
-        {
-            Debug.Log($"Machine {machine} not found for Button {id}.");
-            return;
-        }
+        else
+            Debug.LogError("[GAME] Machine component not found on parent GameObject.");
+    }
 
-        Machine.machines[machine].IsReady();
-        Debug.Log($"Button clicked: {id}");
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("[GAME] Button pressed via trigger.");
+        if (button_box != null)
+            button_box.transform.localPosition -= new Vector3(0, press_depth, 0);
+        OnClick();
+    }
 
+    private void OnTriggerExit(Collider other)
+    {
+        if (button_box != null)
+            button_box.transform.localPosition += new Vector3(0, press_depth, 0);
     }
 }
