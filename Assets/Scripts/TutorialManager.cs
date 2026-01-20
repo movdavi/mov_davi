@@ -21,16 +21,6 @@ public class TutorialManager : MonoBehaviour
     //Se llama cuando le damos al boton empezar del maim
     void StartStep(int index)
     {
-        // Apagar todos los highlights primero
-        foreach (var step in steps)
-        {
-            step.piecesDone = 0;
-            foreach (var piece in step.piecesToHighlight)
-                piece.SetHighlight(false);
-            if (step.targetZone != null)
-                step.targetZone.SetActive(false);
-        }
-
         // Activar highlight del paso actual
         foreach (var piece in steps[index].piecesToHighlight)
             piece.SetHighlight(true);
@@ -47,7 +37,7 @@ public class TutorialManager : MonoBehaviour
     }
 
     // Llamar desde los triggers / piezas cuando se coloca correctamente
-    public void PiecePlaced(GameObject piece)
+    public void PiecePlaced(Blinking piece)
     {
         var step = steps[currentStep];
         if (!IsPlaceStep(step))
@@ -65,13 +55,14 @@ public class TutorialManager : MonoBehaviour
         if (!valid) return;
         
         step.piecesDone++;
+        piece.SetHighlight(false);
         if(step.piecesDone >= GetPiecesRequired(step))
         {
             AdvanceStep();
         }
     }
 
-    public void PieceTaken(GameObject piece)
+    public void PieceTaken(Blinking piece)
     {
         var step = steps[currentStep];
         if (!IsTakeStep(step))
@@ -87,7 +78,7 @@ public class TutorialManager : MonoBehaviour
             }
         }
         if (!valid) return;
-
+        piece.SetHighlight(false);
         step.piecesDone++;
         if (step.piecesDone >= GetPiecesRequired(step))
         {

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3645712241276106366}
   - component: {fileID: 9126637102573247368}
   - component: {fileID: 1149280423667952178}
+  - component: {fileID: 1041486135096843251}
   m_Layer: 0
   m_Name: 6
   m_TagString: Untagged
@@ -90,3 +91,16 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1041486135096843251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1187545826449476918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e2ee00d95c6045e9b197f2a56e25852, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TutorialPieceGrab
+  tutorialManager: {fileID: 0}

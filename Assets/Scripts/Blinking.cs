@@ -3,34 +3,36 @@ using UnityEngine;
 public class Blinking : MonoBehaviour
 {
     [Header("Parpadeo")]
-    public Color highlightColor = Color.yellow; // color de la iluminación
-    public float speed = 2f;                    // velocidad del parpadeo
+    public Color highlightColor = Color.yellow;
+    public float speed = 2f;
+
     private Color originalColor;
     private Renderer rend;
+    private bool isBlinking = false;
 
     void Start()
     {
         rend = GetComponent<Renderer>();
         if (rend != null)
         {
-            originalColor = rend.material.color; // guardar color original
+            originalColor = rend.material.color;
         }
     }
 
     void Update()
     {
-        if (rend != null)
-        {
-            // Parpadeo sinusoidal entre color original y highlightColor
-            float t = (Mathf.Sin(Time.time * speed) + 1f) / 2f; // valor entre 0 y 1
-            rend.material.color = Color.Lerp(originalColor, highlightColor, t);
-        }
+        if (!isBlinking || rend == null) return;
+
+        float t = (Mathf.Sin(Time.time * speed) + 1f) / 2f;
+        rend.material.color = Color.Lerp(originalColor, highlightColor, t);
     }
     public void SetHighlight(bool active)
     {
         if (active)
-            rend.material.color = highlightColor;
+            isBlinking = true;
         else
-            rend.material.color = originalColor;
+            isBlinking = false;
+            if (rend != null)
+                rend.material.color = originalColor;
     }
 }
