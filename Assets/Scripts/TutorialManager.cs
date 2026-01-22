@@ -17,7 +17,6 @@ public class TutorialManager : MonoBehaviour
     {
         StartStep(currentStep);
     }
-
     //Se llama cuando le damos al boton empezar del maim
     void StartStep(int index)
     {
@@ -26,14 +25,12 @@ public class TutorialManager : MonoBehaviour
             Debug.Log("Highlighting piece: " + piece.gameObject.name);
             piece.SetHighlight(true);
         }
-
-            var zoneBlink = steps[index].targetZone.GetComponent<Blinking>();
-            if (zoneBlink != null)
-            {
-                Debug.Log("Activando blink en TargetZone");
-                zoneBlink.SetHighlight(true);
-            }
-
+        var zoneBlink = steps[index].targetZone.GetComponent<Blinking>();
+        if (zoneBlink != null)
+        {
+            Debug.Log("Activando blink en TargetZone");
+            zoneBlink.SetHighlight(true);
+        }
         if (IsPlaceStep(steps[index]) && steps[index].targetZone != null)
         {
             steps[index].targetZone.SetActive(true);
@@ -74,7 +71,7 @@ public class TutorialManager : MonoBehaviour
     }
 
     public void PieceTaken(Blinking piece)
-    {
+    { 
         var step = steps[currentStep];
         if (!IsTakeStep(step))
             return;

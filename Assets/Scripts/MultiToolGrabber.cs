@@ -26,7 +26,7 @@ public class MultiToolGrabber : MonoBehaviour
         last_parent.Add(button, piece.gameObject.transform.parent);
         piece.gameObject.transform.SetParent(transform, true);
         piece.isGrabbed = true;
-
+        piece.PieceGrabbed();
     }
     private void Detach_Piece(OVRInput.Button button)
     {
