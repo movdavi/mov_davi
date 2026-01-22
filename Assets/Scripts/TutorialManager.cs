@@ -21,25 +21,22 @@ public class TutorialManager : MonoBehaviour
     //Se llama cuando le damos al boton empezar del maim
     void StartStep(int index)
     {
-        // Apagar todos los highlights primero
-        foreach (var step in steps)
-        {
-            step.piecesDone = 0;
-            foreach (var piece in step.piecesToHighlight)
-                piece.SetHighlight(false);
-            if (step.targetZone != null)
-                step.targetZone.SetActive(false);
+        // Activar highlight del paso actual
+        foreach (var piece in steps[index].piecesToHighlight) {
+            Debug.Log("Highlighting piece: " + piece.gameObject.name);
+            piece.SetHighlight(true);
         }
 
-        // Activar highlight del paso actual
-        foreach (var piece in steps[index].piecesToHighlight)
-            piece.SetHighlight(true);
+            var zoneBlink = steps[index].targetZone.GetComponent<Blinking>();
+            if (zoneBlink != null)
+            {
+                Debug.Log("Activando blink en TargetZone");
+                zoneBlink.SetHighlight(true);
+            }
 
         if (IsPlaceStep(steps[index]) && steps[index].targetZone != null)
         {
             steps[index].targetZone.SetActive(true);
-            if (steps[index].targetZone.TryGetComponent<TargetZoneTrigger>(out var trigger))
-                trigger.tutorialManager = this;
         }
 
         Debug.Log("Paso actual: " + steps[index].stepName);
@@ -47,16 +44,20 @@ public class TutorialManager : MonoBehaviour
     }
 
     // Llamar desde los triggers / piezas cuando se coloca correctamente
-    public void PiecePlaced(GameObject piece)
+    public void PiecePlaced(Blinking piece, TargetZoneTrigger zone)
     {
         var step = steps[currentStep];
         if (!IsPlaceStep(step))
             return;
 
+        if (zone.gameObject != step.targetZone) {
+            Debug.Log("Pieza colocada en zona incorrecta.");
+            return;
+        }
         bool valid = false;
         foreach (var p in step.piecesToHighlight)
         {
-            if (p.gameObject == piece)
+            if (p == piece)
             {
                 valid = true;
                 break;
@@ -65,13 +66,14 @@ public class TutorialManager : MonoBehaviour
         if (!valid) return;
         
         step.piecesDone++;
+        piece.SetHighlight(false);
         if(step.piecesDone >= GetPiecesRequired(step))
         {
             AdvanceStep();
         }
     }
 
-    public void PieceTaken(GameObject piece)
+    public void PieceTaken(Blinking piece)
     {
         var step = steps[currentStep];
         if (!IsTakeStep(step))
@@ -80,14 +82,14 @@ public class TutorialManager : MonoBehaviour
         bool valid = false;
         foreach (var p in step.piecesToHighlight)
         {
-            if (p.gameObject == piece)
+            if (p == piece)
             {
                 valid = true;
                 break;
             }
         }
         if (!valid) return;
-
+        piece.SetHighlight(false);
         step.piecesDone++;
         if (step.piecesDone >= GetPiecesRequired(step))
         {
@@ -96,6 +98,15 @@ public class TutorialManager : MonoBehaviour
     }
     public void AdvanceStep()
     {
+        var current = steps[currentStep];
+        if (current.targetZone != null)
+        {
+            var zoneBlink = current.targetZone.GetComponent<Blinking>();
+            if (zoneBlink != null)
+            {
+                zoneBlink.SetHighlight(false);
+            }
+        }
         currentStep++;
         if (currentStep < steps.Length)
             StartStep(currentStep);

@@ -23,9 +23,9 @@ public class TargetZoneTrigger : MonoBehaviour
             return;
         }
 
-        if (!other.TryGetComponent<Piece>(out var pieceComponent))
+        if (!other.TryGetComponent<Blinking>(out var pieceComponent))
             return;
 
-        tutorialManager.PiecePlaced(pieceComponent.gameObject);
+        tutorialManager.PiecePlaced(pieceComponent, this);
     }
 }
